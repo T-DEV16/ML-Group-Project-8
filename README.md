@@ -13,13 +13,20 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 ## First Model
 
 Our first model is a Convolutional Neural Network with the layers:
-- CNN LAYERS PLOT
+<br>
 
-We thought this was a good place to start because it is not too complicated, and was trainable in a decent amount of time. We used 40 epochs, with a batch size of 2, to speed up training, as it was taking a very long time.
-We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good.
+<img src="model.png" alt="drawing" style="width:400px;height:1200px"/>
 
-- EXPLAIN MODEL
-- EXPLAIN METRICS
+
+We thought this was a good place to start because it is not very complicated, and was trainable in a decent amount of time. We used 40 epochs, with a batch size of 2, to speed up training, as it was taking a very long time.
+
+We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good. We used a custom defined loss, $MSE + (1 - IOU)$, which we will most likely change in the future. We came up with this to simple incorperate both the MSE and in the training of the model. This is how this simple model performed:
+<br>
+
+<img src="train_val.png" alt="drawing" style="width:600px;height:1000px"/>
+
+As we can see, this model is far too simple to have an IOU (accuracy in the graph) of 0.015 or higher. We can see signs of overfitting after the $14th$ epoch. 
+
 - EVALUATE MODEL WITH METRICS
 - GRAPHS
 - EXAMPLE PREDICTIONS
