@@ -27,5 +27,7 @@ We are using IOU as an accuracy metric for the bounding boxes. Intersection over
 
 As we can see, this model is far too simple to have an IOU (accuracy in the graph) of 0.015 or higher. We can see signs of overfitting after the $14th$ epoch. The model is saved in the files saved_model.pb. 
 
-- EXAMPLE PREDICTIONS
-- NEXT MODELS/PREPROCESSING
+We can see this simple model did not perform very well, but there is lots of room for improvement. Here is an example prediction (green: true, red:prediction):
+<br>
+
+<img src="pred.png" alt="drawing" style="width:400px;height:600"/>
