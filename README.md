@@ -15,7 +15,8 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 Our first model is a Convolutional Neural Network with the layers:
 - CNN LAYERS PLOT
 
-We thought this was a good place to start because it is not too complicated, and was trainable in a decent amount of time. 
+We thought this was a good place to start because it is not too complicated, and was trainable in a decent amount of time. We used 40 epochs, with a batch size of 2, to speed up training, as it was taking a very long time.
+We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good.
 
 - EXPLAIN MODEL
 - EXPLAIN METRICS
