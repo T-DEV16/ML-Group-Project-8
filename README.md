@@ -9,3 +9,16 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 * Our result is 2236 image pairs all of which are (600, 600) numpy arrays with float values ranging from 0 to 1.
 
 [1] The main reason is that as long as the rescaling doesn't significantly distort the relevant features of an image, shrinking it down allows us to build a deeper model and train on more examples with the limited compute and time resources we have. We will test it out but most likely we are going to end up shrinking the images even further (to 250 by 250) later on.
+
+## First Model
+
+Our first model is a Convolutional Neural Network with the layers:
+- CNN LAYERS PLOT
+
+We thought this was a good place to start because it is not too complicated, and was trainable in a decent amount of time. 
+
+- EXPLAIN MODEL
+- EXPLAIN METRICS
+- EVALUATE MODEL WITH METRICS
+- GRAPHS
+- EXAMPLE PREDICTIONS
