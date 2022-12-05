@@ -10,7 +10,6 @@ The first step is to create the dataset with the images, their labels, and the p
 
 <img src="sample.png" alt="drawing"/>
 
-
 After creating the csv dataset, it looks like this:
 <img src="table.JPG" alt="drawing"/>
 
@@ -19,10 +18,13 @@ We are working with a dataset that contains **2235** samples (images). The targe
 
 <img src="classes.png" alt="drawing" style="width:500px;height:300px"/>
 
+What each of the target classes look like:
+<br>
+<img src="example.png" alt="drawing"/>
+
 The distributions of bounding box widths & heights are very right skewed, as one would expect. 
 <img src="box_w.png" alt="drawing" style="width:500px;height:300px"/>
 <img src="box_h.png" alt="drawing" style="width:500px;height:300px"/>
-
 
 
 
