@@ -17,8 +17,11 @@ After creating the csv dataset, it looks like this:
 ### Data Exploration
 We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. 
 
-<img src="classes.png" alt="drawing" style="width:600px;height:400px"/>
+<img src="classes.png" alt="drawing" style="width:500px;height:300px"/>
 
+The distributions of bounding box widths & heights are very right skewed, as one would expect. 
+<img src="box_w.png" alt="drawing" style="width:500px;height:300px"/>
+<img src="box_h.png" alt="drawing" style="width:500px;height:300px"/>
 
 
 
