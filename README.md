@@ -8,6 +8,9 @@ With the new era of autonomous vehicles, there is an ever growing necessity for 
 ### Data Creation
 The first step is to create the dataset with the images, their labels, and the parameters for the pothole bounding boxes. We will use keras to load and convert images to numpy arrays, and cv2 to detect the potholes and label them. We store the dataset as a csv file. This is what a sample/mask looks like with its corresponding bounding box
 
+<img src="sample.png" alt="drawing"/>
+
+
 
 
 
