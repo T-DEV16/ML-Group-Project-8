@@ -11,6 +11,13 @@ The first step is to create the dataset with the images, their labels, and the p
 <img src="sample.png" alt="drawing"/>
 
 
+After creating the csv dataset, it looks like this:
+<img src="table.JPG" alt="drawing"/>
+
+### Data Exploration
+We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. 
+
+
 
 
 
