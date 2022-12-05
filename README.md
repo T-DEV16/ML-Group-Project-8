@@ -26,9 +26,7 @@ The distributions of bounding box widths & heights are very right skewed, as one
 <img src="box_w.png" alt="drawing" style="width:500px;height:300px"/>
 <img src="box_h.png" alt="drawing" style="width:500px;height:300px"/>
 
-
-
-## Data Preprocessing
+### Data Preprocessing
 
 * Our dataset consists of 2236 pairs of images. Each image is either 630 by 1024 or 640 by 1024.
 In order to standardize, we scale each image down to 600 by 600. This also makes the training easier by decreasing the dimensions we input into our model [1].
@@ -38,7 +36,7 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 
 [1] The main reason is that as long as the rescaling doesn't significantly distort the relevant features of an image, shrinking it down allows us to build a deeper model and train on more examples with the limited compute and time resources we have. We will test it out but most likely we are going to end up shrinking the images even further (to 250 by 250) later on.
 
-## First Model
+## Model 1
 
 Our first model is a Convolutional Neural Network with the layers:
 <br>
