@@ -50,6 +50,7 @@ This simple model has **4** convolutional layers and **1** Dense layer with 62 n
 
 Our second model is similar to the original yolo v1 object detection CNN, with the layers:
 <br>
+<img src="yolomodel.png" alt="drawing"/>
 
 
 
