@@ -99,6 +99,20 @@ As we can see, this model also did not perform very well, resulting in an test I
 
 ### Model 3: VGG16 Model
 This is how the VGG16 model performed:
+<br>
+
+<img src="vggmodel.png" alt="drawing"/>
+
+As we can see, this model did significantly better than the others, resulting in a training IOU of 21% and a testing IOU of almost 10%. Although there is still lots of room for improvement, this is a good start. Here are 2 example predictions made by the VGG16 model:
+
+<img src="vggexample1.png" alt="drawing"/> <img src="vggexample2.png" alt="drawing"/>
+
+
+### Model 4: Branched VGG16 Model
+This is how the Branched VGG16 model performed:
+<br>
+
+
 
 
 
