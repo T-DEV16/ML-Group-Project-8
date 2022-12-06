@@ -114,14 +114,42 @@ This is how the Branched VGG16 model performed:
 
 <img src="branched_model.png" alt="drawing"/>
 
+We can immediately see that this model did not train well. The validation loss stays the same through the epochs, though the training loss decreases. It might seem like the bounding box accuracy is high at **70%**, but this is not good. This model uses both images with and without potholes, because it it predicting the bounding boxes and the class label. The problem with this is that the majority of the data are 'no pothole', with bounding box coordinates [0,0,0,0]. This means that using this prior, the model can achieve a bounding box accuracy of **70%** by predicting all boxes to be essentially [0,0,0,0]. Here is an example showing exactly the problem of the prior in this branched model:
 
-<img src="branchedexample.png" alt="drawing"/>
+<img src="branched_example.png" alt="drawing"/>
 
+As we can see, the model predicted the bounding box coordinates as [0,0,0,0], when there was indeed a pothole.
 
 
 ## Discussion
 ### Model 1: Simple Model
-- We thought this model was a good place to start because it is not very complicated, and was trainable in a decent amount of time.
+We thought this model was a good place to start because it is not very complicated, and was trainable in a decent amount of time. Initially we had a custom loss function which was the $IOU$ measure, but we quickly realized that $IOU$ does not make a good loss function for the following reasons:
+- If the predicted box entirely contains the target box, the gradients with respect to the box positions will be 0
+- If the target box entirely contains the predicted box, the gradients with respect to position will be 0.
+- If the predicted box and target box are completely disjoint, all the gradients will be 0, which impedes training
+So we switched the loss to the classic $MSE$ loss. We think that this model was simply not complex enough to learn the pothole patterns in the images, as seen by the early overfitting. This model was also trained on data with and without potholes, and training it on only potholes like we did with the other may have increased its accuracy.
+
 - initial loss function
 - complexity not enough
 - definite increase in bounding box accuracy when using only images with potholes. The images without give it a prior.
+
+### Model 2: YOLO Model
+This model performed surprisingly poorly given its complexity. At first we trained it on data with and without potholes, but saw better results when focusing on pothole images for the box regression. 
+
+
+### Model 3: VGG16 Model
+
+
+
+### Model 4: Branched VGG16 Model
+
+
+For all the models, we chose the batchsize and epochs based on what Colab could handle, and whether or not there were signs of overfitting during training. The box regression performed much better when trained on only data with potholes, and the VGG16 Model had the best accuracy so far.
+
+
+## Conclusion
+
+
+
+
+## Collaboration
