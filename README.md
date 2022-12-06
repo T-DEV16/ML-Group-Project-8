@@ -46,7 +46,7 @@ Our first model is a Convolutional Neural Network with the layers:
 
 This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, the Adam optimizer with a learning rate of **0.0001**, and $MSE$ as the loss function. This model has 5 outputs: the bounding box coordinates as well as the class.
 
-### [Model 2: YOLO Model] (https://github.com/sachinmloecher/ML-Group-Project-8/blob/a62a11a8ea079dfd9bda19a104655bb40fb89d5c/Yolo_Model.ipynb)
+### [Model 2: YOLO Model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/a62a11a8ea079dfd9bda19a104655bb40fb89d5c/Yolo_Model.ipynb)
 
 Our second model is similar to the original yolo v1 object detection CNN, with the layers:
 <br>
@@ -54,7 +54,7 @@ Our second model is similar to the original yolo v1 object detection CNN, with t
 
 This model has **20** convolutional layers and **5** Dense layers, with Batch Normalization and Leaky ReLu like in the original yolo v1 paper. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.001**. We decided to make this model a regression only model, meaning it only outputs the bounding box predictions and not the class.
 
-### Model 3: [VGG16 Model] (https://github.com/sachinmloecher/ML-Group-Project-8/blob/a62a11a8ea079dfd9bda19a104655bb40fb89d5c/VGG16_Model.ipynb)
+### Model 3: [VGG16 Model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/a62a11a8ea079dfd9bda19a104655bb40fb89d5c/VGG16_Model.ipynb)
 
 Our third model extends an already existing network with set initial weights. We altered the VGG16 Network Head with our own trainable Dense layers to output the predicted bounding box coordinates:
 
