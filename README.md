@@ -44,7 +44,7 @@ Our first model is a Convolutional Neural Network with the layers:
 <img src="model.png" alt="drawing" style="width:400px;height:1200px"/>
 
 
-This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We thought this was a good place to start because it is not very complicated, and was trainable in a decent amount of time. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001**.
+This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001**.
 
 
 
@@ -54,6 +54,8 @@ This simple model has **4** convolutional layers and **1** Dense layer with 62 n
 We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good. We used a custom defined loss, $MSE + (1 - IOU)$, which we will most likely change in the future. We came up with this to simple incorperate both the MSE and in the training of the model. This is how this simple model performed:
 <br>
 
+
+We thought this was a good place to start because it is not very complicated, and was trainable in a decent amount of time.
 <img src="simplemodel.png" alt="drawing"/>
 
 As we can see, this model is far too simple to have an IOU (accuracy in the graph) of 0.015 or higher. We can see signs of overfitting after the $14th$ epoch. The model is saved in the files saved_model.pb. 
