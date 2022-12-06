@@ -112,8 +112,10 @@ As we can see, this model did significantly better than the others, resulting in
 This is how the Branched VGG16 model performed:
 <br>
 
+<img src="branched_model.png" alt="drawing"/>
 
 
+<img src="branchedexample.png" alt="drawing"/>
 
 
 
