@@ -58,7 +58,9 @@ This model has **20** convolutional layers and **5** Dense layers, with Batch No
 
 Our third model extends an already existing network with set initial weights. We altered the VGG16 Network Head with our own trainable Dense layers to output the predicted bounding box coordinates:
 
-<img src="yolomodel.png" alt="drawing"/>
+<img src="vgg_model.png" alt="drawing"/>
+
+This model has **13** convolutional layers and **4** Dense layers, with Max Pooling in between layers. We used 10 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model is also a regression only model, meaning it has 4 outputs corresponding to the bounding box coordinate predictions.
 
 
 
