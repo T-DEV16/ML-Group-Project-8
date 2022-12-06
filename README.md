@@ -44,7 +44,7 @@ Our first model is a Convolutional Neural Network with the layers:
 <img src="model.png" alt="drawing" style="width:400px;height:1200px"/>
 
 
-This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We thought this was a good place to start because it is not very complicated, and was trainable in a decent amount of time. We used 40 epochs, with a batch size of 2. We used the Adam optimizer with a learning rate of **0.0001**.
+This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We thought this was a good place to start because it is not very complicated, and was trainable in a decent amount of time. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001**.
 
 
 
