@@ -89,6 +89,18 @@ We can see this simple model did not perform very well, but there is lots of roo
 
 
 ### Model 2: YOLO Model
+This is how the Yolo model performed:
+<br>
+
+<img src="yolo_model.png" alt="drawing"/>
+
+As we can see, this model also did not perform very well, resulting in an test IOU similar to that of the simple model.
+
+
+### Model 3: VGG16 Model
+This is how the VGG16 model performed:
+
+
 
 
 ## Discussion
@@ -96,4 +108,4 @@ We can see this simple model did not perform very well, but there is lots of roo
 - We thought this model was a good place to start because it is not very complicated, and was trainable in a decent amount of time.
 - initial loss function
 - complexity not enough
-- 
+- definite increase in bounding box accuracy when using only images with potholes. The images without give it a prior.
