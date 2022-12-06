@@ -36,7 +36,7 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 
 [1] The main reason is that as long as the rescaling doesn't significantly distort the relevant features of an image, shrinking it down allows us to build a deeper model and train on more examples with the limited compute and time resources we have. We will test it out but most likely we are going to end up shrinking the images even further (to 250 by 250) later on.
 
-## Model 1: Simple Model
+### Model 1: Simple Model
 
 Our first model is a Convolutional Neural Network with the layers:
 <br>
@@ -46,7 +46,7 @@ Our first model is a Convolutional Neural Network with the layers:
 
 This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001**. This model has 5 outputs: the bounding box coordinates as well as the class.
 
-## Model 2: YOLO Model
+### Model 2: YOLO Model
 
 Our second model is similar to the original yolo v1 object detection CNN, with the layers:
 <br>
@@ -54,7 +54,7 @@ Our second model is similar to the original yolo v1 object detection CNN, with t
 
 This model has **20** convolutional layers and **5** Dense layers, with Batch Normalization and Leaky ReLu like in the original yolo v1 paper. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.001**. We decided to make this model a regression only model, meaning it only outputs the bounding box predictions and not the class.
 
-## Model 3: VGG16 Model
+### Model 3: VGG16 Model
 
 Our third model extends an already existing network with set initial weights. We altered the VGG16 Network Head with our own trainable Dense layers to output the predicted bounding box coordinates:
 
@@ -62,6 +62,7 @@ Our third model extends an already existing network with set initial weights. We
 
 This model has **13** convolutional layers and **4** Dense layers, with Max Pooling in between layers. We used 10 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model is also a regression only model, meaning it has 4 outputs corresponding to the bounding box coordinate predictions.
 
+### Model 4: Branched VGG16 Model
 
 
 
