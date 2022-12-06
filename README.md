@@ -46,6 +46,11 @@ Our first model is a Convolutional Neural Network with the layers:
 
 This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001**.
 
+## Model 2
+
+Our second model is similar to the original yolo v1 object detection CNN, with the layers:
+<br>
+
 
 
 
