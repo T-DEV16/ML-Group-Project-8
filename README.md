@@ -63,4 +63,6 @@ As we can see, this model is far too simple to have an IOU (accuracy in the grap
 We can see this simple model did not perform very well, but there is lots of room for improvement. Here is an example prediction (green: true, red:prediction):
 <br>
 
-<img src="pred.png" alt="drawing" style="width:400px;height:600"/>
+<img src="simplemodelpred.png" alt="drawing" style="width:400px;height:600"/>
+<img src="simplemodelpred2.png" alt="drawing" style="width:400px;height:600"/>
+
