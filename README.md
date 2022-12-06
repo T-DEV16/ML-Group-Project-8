@@ -44,7 +44,7 @@ Our first model is a Convolutional Neural Network with the layers:
 <img src="model.png" alt="drawing" style="width:400px;height:1200px"/>
 
 
-This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001**. This model has 5 outputs: the bounding box coordinates as well as the class.
+This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, the Adam optimizer with a learning rate of **0.0001**, and $MSE$ as the loss function. This model has 5 outputs: the bounding box coordinates as well as the class.
 
 ### Model 2: YOLO Model
 
@@ -71,21 +71,29 @@ Our fourth model is a work in progress. It is similar to model 3, as it extends 
 This model has **13** convolutional layers and **4** Dense layers for each branch, with Max Pooling in between layers. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model has 5 outputs, corresponding to the 4 bounding box coordinate predictions and the binary pothole classification.
 
 
+## Results
 
+We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good.
 
-
-We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good. We used a custom defined loss, $MSE + (1 - IOU)$, which we will most likely change in the future. We came up with this to simple incorperate both the MSE and in the training of the model. This is how this simple model performed:
+### Model 1: Simple Model
+This is how this simple model performed:
 <br>
 
-
-We thought this was a good place to start because it is not very complicated, and was trainable in a decent amount of time.
 <img src="simplemodel.png" alt="drawing"/>
 
-As we can see, this model is far too simple to have an IOU (accuracy in the graph) of 0.015 or higher. We can see signs of overfitting after the $14th$ epoch. The model is saved in the files saved_model.pb. 
-
-We can see this simple model did not perform very well, but there is lots of room for improvement. Here is an example prediction (green: true, red:prediction):
+As we can see, this model is far too simple to have an IOU (accuracy in the graph) of **0.015** or higher. We can see signs of overfitting very early on.
+We can see this simple model did not perform very well, but there is lots of room for improvement. Here are 2 example predictions (green: true, red:prediction):
 <br>
 
-<img src="simplemodelpred.png" alt="drawing" style="width:400px;height:600"/>
-<img src="simplemodelpred2.png" alt="drawing" style="width:400px;height:600"/>
+<img src="simplemodelpred.png" alt="drawing" style="width:400px;height:500"/> <img src="simplemodelpred2.png" alt="drawing" style="width:400px;height:500"/>
 
+
+### Model 2: YOLO Model
+
+
+## Discussion
+### Model 1: Simple Model
+- We thought this model was a good place to start because it is not very complicated, and was trainable in a decent amount of time.
+- initial loss function
+- complexity not enough
+- 
