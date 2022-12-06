@@ -129,27 +129,40 @@ We thought this model was a good place to start because it is not very complicat
 - If the predicted box and target box are completely disjoint, all the gradients will be 0, which impedes training
 So we switched the loss to the classic $MSE$ loss. We think that this model was simply not complex enough to learn the pothole patterns in the images, as seen by the early overfitting. This model was also trained on data with and without potholes, and training it on only potholes like we did with the other may have increased its accuracy.
 
-- initial loss function
-- complexity not enough
-- definite increase in bounding box accuracy when using only images with potholes. The images without give it a prior.
 
 ### Model 2: YOLO Model
 This model performed surprisingly poorly given its complexity. At first we trained it on data with and without potholes, but saw better results when focusing on pothole images for the box regression. 
 
 
 ### Model 3: VGG16 Model
+This model did significantly better than the others in terms of IOU. Although it is still far from perfect, the complex dense layers in combination with the VGG16 weights seem to have recognized petterns the Yolo model simply did not see.
 
 
 
 ### Model 4: Branched VGG16 Model
+This model still needs to be significantly tweaked in order to see real results, but I thought the effect of the prior was very interesting.
+
 
 
 For all the models, we chose the batchsize and epochs based on what Colab could handle, and whether or not there were signs of overfitting during training. The box regression performed much better when trained on only data with potholes, and the VGG16 Model had the best accuracy so far.
 
 
 ## Conclusion
-
+To conclude, the VGG16 Model performed the best of the models we created, although it still has a long ways to go. I think that pothole recognition is no simple task, and will require much more of my time to further improve the accuracy. I plan on continuing the development of these and new models regardless of if I receive credit for them. I would like to implement the Yolo v5 network next, as it has an incredible reported accuracy and speed. There is still lots of work to be done on these models, but this was a good start.
 
 
 
 ## Collaboration
+**Sachin Loecher**
+- Wrote the abstract/introduction
+- Did the dataset creation and preprocessing
+- Did the first preprocessing milestone and write up
+- Built the first model
+- Did the first model milestone and write up
+- Built the second model
+- Built the third model
+- Built the fourth model
+- Wrote the Methods section
+- Wrote the Results section
+- Wrote the Discussion section
+- Wrote the Conclusion Section
