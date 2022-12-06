@@ -54,7 +54,7 @@ Our second model is similar to the original yolo v1 object detection CNN, with t
 
 This model has **20** convolutional layers and **5** Dense layers, with Batch Normalization and Leaky ReLu like in the original yolo v1 paper. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.001**. We decided to make this model a regression only model, meaning it only outputs the bounding box predictions and not the class.
 
-### Model 3: [VGG16 Model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/be75b3f8a578206bc3725a50a11a00f088a59c75/Notebooks/VGG16_Model.ipynb)
+### [Model 3: VGG16 Model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/be75b3f8a578206bc3725a50a11a00f088a59c75/Notebooks/VGG16_Model.ipynb)
 
 Our third model extends an already existing network with set initial weights. We altered the VGG16 Network Head with our own trainable Dense layers to output the predicted bounding box coordinates:
 
@@ -63,7 +63,7 @@ Our third model extends an already existing network with set initial weights. We
 This model has **13** convolutional layers and **4** Dense layers, with Max Pooling in between layers. We used 10 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model is also a regression only model, meaning it has 4 outputs corresponding to the bounding box coordinate predictions.
 
 
-### [Model 4: Branched VGG16](https://github.com/sachinmloecher/ML-Group-Project-8/blob/be75b3f8a578206bc3725a50a11a00f088a59c75/Notebooks/PotholeDetection%20(1).ipynb) 
+### [Model 4: Branched VGG16](https://github.com/sachinmloecher/ML-Group-Project-8/blob/3778621c6875979136f026b8aa47ec1d08dd1d1e/Notebooks/Branched%20VGG16_Model.ipynb) 
 
 Our fourth model is a work in progress. It is similar to model 3, as it extends an existing network with set initial weights. We altered the VGG16 Network Head with two of our own trainable Dense layers to output the predicted bounding box coordinated and the predicticted class labels.
 
