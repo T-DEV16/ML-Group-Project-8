@@ -8,23 +8,36 @@ With the new era of autonomous vehicles, there is an ever growing necessity for 
 ### Data Creation
 The first step is to create the dataset with the images, their labels, and the parameters for the pothole bounding boxes. We will use keras to load and convert images to numpy arrays, and cv2 to detect the potholes and label them. We store the dataset as a csv file. This is what a sample/mask looks like with its corresponding bounding box
 
-<img src="sample.png" alt="drawing"/>
+
+![sample](https://user-images.githubusercontent.com/38708456/206112718-8283b796-b305-4bf7-b2a5-9e56d6d8c95f.png)
+
 
 After creating the csv dataset, it looks like this:
-<img src="table.JPG" alt="drawing"/>
+
+![table](https://user-images.githubusercontent.com/38708456/206113022-aa12b6f7-11e6-439c-9e2a-145bee95f621.JPG)
+
 
 ### Data Exploration
 We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. 
 
-<img src="classes.png" alt="drawing" style="width:500px;height:300px"/>
+
+![classes](https://user-images.githubusercontent.com/38708456/206113157-e7d53728-9381-4c36-b089-71328b6f14ae.png)
+
 
 What each of the target classes look like:
 <br>
-<img src="example.png" alt="drawing"/>
 
-The distributions of bounding box widths & heights are very right skewed, as one would expect. 
-<img src="box_w.png" alt="drawing" style="width:500px;height:300px"/>
-<img src="box_h.png" alt="drawing" style="width:500px;height:300px"/>
+![example](https://user-images.githubusercontent.com/38708456/206113332-98492211-5084-4e75-80e6-aac4add0f029.png)
+
+
+The distributions of bounding box widths & heights are very right skewed, as one would expect.
+
+
+![box_w](https://user-images.githubusercontent.com/38708456/206113501-3fed7fd9-30e3-4071-8dea-2594cba84a27.png)
+
+
+![box_h](https://user-images.githubusercontent.com/38708456/206113611-518e8cc9-d565-4b72-a467-79e6e4d3f901.png)
+
 
 ### Data Preprocessing
 
@@ -41,7 +54,8 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 Our first model is a Convolutional Neural Network with the layers:
 <br>
 
-<img src="model.png" alt="drawing" style="width:400px;height:1200px"/>
+
+![model](https://user-images.githubusercontent.com/38708456/206114677-ab0eb225-a785-4e9b-ba5c-62f31d3b909c.png)
 
 
 This simple model has **4** convolutional layers and **1** Dense layer with 62 nodes. We used 15 epochs, with a batch size of 2, the Adam optimizer with a learning rate of **0.0001**, and $MSE$ as the loss function. This model has 5 outputs: the bounding box coordinates as well as the class.
@@ -50,7 +64,11 @@ This simple model has **4** convolutional layers and **1** Dense layer with 62 n
 
 Our second model is similar to the original yolo v1 object detection CNN, with the layers:
 <br>
-<img src="yolomodel.png" alt="drawing"/>
+
+
+![yolomodel](https://user-images.githubusercontent.com/38708456/206114763-a41ee164-b0a5-473a-b617-0926c7ed2818.png)
+
+
 
 This model has **20** convolutional layers and **5** Dense layers, with Batch Normalization and Leaky ReLu like in the original yolo v1 paper. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.001**. We decided to make this model a regression only model, meaning it only outputs the bounding box predictions and not the class.
 
@@ -58,7 +76,9 @@ This model has **20** convolutional layers and **5** Dense layers, with Batch No
 
 Our third model extends an already existing network with set initial weights. We altered the VGG16 Network Head with our own trainable Dense layers to output the predicted bounding box coordinates:
 
-<img src="vgg_model.png" alt="drawing"/>
+
+![vgg_model](https://user-images.githubusercontent.com/38708456/206114814-8a349052-b376-46e9-871b-0bff2543313f.png)
+
 
 This model has **13** convolutional layers and **4** Dense layers, with Max Pooling in between layers. We used 10 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model is also a regression only model, meaning it has 4 outputs corresponding to the bounding box coordinate predictions.
 
@@ -67,7 +87,9 @@ This model has **13** convolutional layers and **4** Dense layers, with Max Pool
 
 Our fourth model is a work in progress. It is similar to model 3, as it extends an existing network with set initial weights. We altered the VGG16 Network Head with two of our own trainable Dense layers to output the predicted bounding box coordinated and the predicticted class labels.
 
-<img src="branchedmodel.png" alt="drawing"/>
+
+![branchedmodel](https://user-images.githubusercontent.com/38708456/206114870-a3bc6473-e40a-482a-814a-cb868f9e8d46.png)
+
 
 This model has **13** convolutional layers and **4** Dense layers for each branch, with Max Pooling in between layers. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model has 5 outputs, corresponding to the 4 bounding box coordinate predictions and the binary pothole classification.
 
@@ -80,20 +102,26 @@ We are using IOU as an accuracy metric for the bounding boxes. Intersection over
 This is how this simple model performed:
 <br>
 
-<img src="simplemodel.png" alt="drawing"/>
+
+![simplemodel](https://user-images.githubusercontent.com/38708456/206113672-36a2645e-8ccf-4df5-b2d9-3c5829358257.png)
+
 
 As we can see, this model is far too simple to have an IOU (accuracy in the graph) of **0.015** or higher. We can see signs of overfitting very early on.
 We can see this simple model did not perform very well, but there is lots of room for improvement. Here are 2 example predictions (green: true, red:prediction):
 <br>
 
-<img src="simplemodelpred.png" alt="drawing" style="width:400px;height:500"/> <img src="simplemodelpred2.png" alt="drawing" style="width:400px;height:500"/>
+
+
+![simplemodelpred](https://user-images.githubusercontent.com/38708456/206115090-c3897f92-70ea-4566-a845-8d4ff800dc43.png)
 
 
 ### Model 2: YOLO Model
 This is how the Yolo model performed:
 <br>
 
-<img src="yolo_model.png" alt="drawing"/>
+
+![yolo_model](https://user-images.githubusercontent.com/38708456/206112238-6f0ad27c-ac2f-4ad2-904c-cc6be4fd3576.png)
+
 
 As we can see, this model also did not perform very well, resulting in an test IOU similar to that of the simple model.
 
@@ -102,22 +130,30 @@ As we can see, this model also did not perform very well, resulting in an test I
 This is how the VGG16 model performed:
 <br>
 
-<img src="vggmodel.png" alt="drawing"/>
+
+![vggmodel](https://user-images.githubusercontent.com/38708456/206113892-ce97a84c-d596-4738-ae79-da170cd7ebae.png)
+
 
 As we can see, this model did significantly better than the others, resulting in a training IOU of 21% and a testing IOU of almost 10%. Although there is still lots of room for improvement, this is a good start. Here are 2 example predictions made by the VGG16 model:
 
-<img src="vggexample1.png" alt="drawing"/> <img src="vggexample2.png" alt="drawing"/>
+
+![vggexample1](https://user-images.githubusercontent.com/38708456/206115264-f6474ac4-d088-4ae5-b80c-589d012f439a.png)
+
+![vggexample2](https://user-images.githubusercontent.com/38708456/206115719-f48a88a4-25c0-4307-98f5-3ccdd94ec6b9.png)
 
 
 ### Model 4: Branched VGG16 Model
 This is how the Branched VGG16 model performed:
 <br>
 
-<img src="branched_model.png" alt="drawing"/>
+
+![branched_model](https://user-images.githubusercontent.com/38708456/206113943-0af32101-9294-4004-a5ea-867897cd4d3a.png)
+
 
 We can immediately see that this model did not train well. The validation loss stays the same through the epochs, though the training loss decreases. It might seem like the bounding box accuracy is high at **70%**, but this is not good. This model uses both images with and without potholes, because it it predicting the bounding boxes and the class label. The problem with this is that the majority of the data are 'no pothole', with bounding box coordinates [0,0,0,0]. This means that using this prior, the model can achieve a bounding box accuracy of **70%** by predicting all boxes to be essentially [0,0,0,0]. Here is an example showing exactly the problem of the prior in this branched model:
 
-<img src="branched_example.png" alt="drawing"/>
+
+![branched_example](https://user-images.githubusercontent.com/38708456/206115403-68f78b53-b820-49d3-891f-ea7d3dc127e7.png)
 
 As we can see, the model predicted the bounding box coordinates as [0,0,0,0], when there was indeed a pothole.
 
