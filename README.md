@@ -105,9 +105,24 @@ First thing’s first, we need to label our dataset. Our dataset is technically 
 ![bi_model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/6c71b28ad666765dd150091a0003fba4c5785fba/Images/bi_model_overview.PNG)
 
 
-### [Model 6: SVM Model for image classification and pothole detection](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Notebooks/SVM_Model.ipynb)
+### [Model 6: SVM (Support Vector Machine) Model for image classification and pothole detection](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Notebooks/SVM_Model.ipynb)
 
-We introduce an SVM Object detection model from kaggle that was inspired by Mehmet Tekman which classified cars. We modify the code and use it to classify images and even further detect potholes via the SVM bounds. After data preprocessing we augment the images via hogs, negative images, and gray scale
+We introduce an SVM Object detection model from kaggle that was inspired by Mehmet Tekman which classified cars. We modify the code and use it to classify images and even further detect potholes via the SVM bounds. After data preprocessing we augment the images via hogs, negative images, and gray scale. The gray scale images (gray colors), hog (Histogram of Oriented Gradients) images (Images that highlight contours and distinct images like potholes), and negative images (inverse colors). The main decision also uses the heatmap, and the heatmap/image predictions are displayed in results. We also resize the image in order to simplify the amount of detail the model needs to use to study the image.
+
+Negative Image Example:
+<img width="1024" alt="NegativeImage" src="https://user-images.githubusercontent.com/38708456/206398347-02540e38-5095-40b6-9307-ff0e6a38e737.png">
+
+We see the inverted colors make it easier for SVM to potentially detect the pothole
+
+Hog Image Example:
+
+<img width="681" alt="HogImageComparision" src="https://user-images.githubusercontent.com/38708456/206398295-b1066c48-8348-4524-bb8d-29a81342a805.png">
+
+As we can see in the image, Hog (Histogram of Oriented Gradients), counts the number of occurences of a gradient in a certain rotation in one part of the image. We use this to extract edges and features from the image, hopefully the ones from the pothole specifically. The reason why we use hog over the image is because images often have certain variations in terms of occlusion, color, light, etc. This noise is reduced by the hog and serves as a representation of the image without the noise explained earlier. 
+
+
+
+
 
 
 ## Results
@@ -182,10 +197,17 @@ This is how our boutique CNN binary classification model performed:
 
 
 ### Model 6: SVM Model
-Unfortunately, while the accuracy reaches 70 percent for strict images cliassfication, the bounds used to detect the pothole specifically were way off. This might cause an issue with pothole detection but it was good that there was a 70 percent accuaracy in terms of image classfication
+Unfortunately, while the accuracy reaches 70 percent for strict images cliassfication, the bounds used to detect the pothole specifically were way off. This might cause an issue with pothole detection but it was good that there was a 70 percent accuaracy in terms of image classfication. The image detection result looks like this:
 
+SVM Prediction via heatmap
+<img width="376" alt="SVMpredictionheatmap" src="https://user-images.githubusercontent.com/38708456/206396860-848e49e5-dcfb-4c69-9c8f-c4c218d2f788.png">
 
+The bounds clearly do not detect the pothole and use SVM like detection. In the future, we can try to improve the heatmap
 
+SVM prediction
+<img width="379" alt="SVMprediction" src="https://user-images.githubusercontent.com/38708456/206398312-7e77ac9b-7d20-4549-a9db-096235bbe528.png">
+
+Same for SVM prediction
 
 
 ## Discussion
