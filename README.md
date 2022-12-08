@@ -179,14 +179,17 @@ This model did significantly better than the others in terms of IOU. Although it
 ### Model 4: Branched VGG16 Model
 This model still needs to be significantly tweaked in order to see real results, but I thought the effect of the prior was very interesting.
 
+### Jetson Nano
+After fully developing our models we would have liked to test the models using the jetson nano with live video input. In setting up the jetson nano we encountered many issues with the different version of images to install on the sd card. 4.5 was used in the end since it was the only one that worked while the newer 4.6 version did not boot for the setup. Also the ssh functionality did not work, and libraries would not install(scipy). We would have liked to test the model by bringing the jetson with us in a car to capture live stream of the potholes on the road and indicating them with bounding boxes. 
+
+We figured out how to run the camera on the jetson nano and was able to capture video and outputed a continuous flow of frames to feed the model. However due to the library download issue we could never create the model on the jetson nano to test with the camera feed as input.
 
 
 For all the models, we chose the batchsize and epochs based on what Colab could handle, and whether or not there were signs of overfitting during training. The box regression performed much better when trained on only data with potholes, and the VGG16 Model had the best accuracy so far.
 
 
 ## Conclusion
-To conclude, the VGG16 Model performed the best of the models we created, although it still has a long ways to go. I think that pothole recognition is no simple task, and will require much more of my time to further improve the accuracy. I plan on continuing the development of these and new models regardless of if I receive credit for them. I would like to implement the Yolo v5 network next, as it has an incredible reported accuracy and speed. There is still lots of work to be done on these models, but this was a good start.
-
+To conclude, the VGG16 Model performed the best of the models we created, although it still has a long ways to go. I think that pothole recognition is no simple task, and will require much more of my time to further improve the accuracy. I plan on continuing the development of these and new models regardless of if I receive credit for them. I would like to implement the Yolo v5 network next, as it has an incredible reported accuracy and speed. There is still lots of work to be done on these models, but this was a good start. 
 
 
 ## Collaboration
@@ -208,6 +211,7 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Setup the Jetson Nano
 - Test models on Jetson Nano
 - Wrote Python code for the Jetson Nano
+- debugged pathing bug in model
 
 **Gordon Feliz**
 - Organized github files
