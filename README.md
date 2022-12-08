@@ -208,3 +208,10 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Setup the Jetson Nano
 - Test models on Jetson Nano
 - Wrote Python code for the Jetson Nano
+
+**Gordon Feliz**
+- Organized github files
+- Created outline for research abstract
+- Helped keep README links up to date
+- Split PotholeDetection(1) into two files, created Data Creation and Processing notebook and Branched VGG16_Model
+- Cleaned up & bug fixed Data Creation and Processing + Branched VGG16_Model
