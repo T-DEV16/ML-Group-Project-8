@@ -96,7 +96,7 @@ Our fourth model is a work in progress. It is similar to model 3, as it extends 
 
 This model has **13** convolutional layers and **4** Dense layers for each branch, with Max Pooling in between layers. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model has 5 outputs, corresponding to the 4 bounding box coordinate predictions and the binary pothole classification.
 
-### Model 5 Binary Classification using CNNs with dropout:
+### [Model 5: Binary Classification using CNNs with dropout](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Notebooks/pothole_binary_model.ipynb))
 
 Due to the nature of limited computational resources and a fairly small dataset in the grand scheme of things, we thought it would be best to make a model with more modest aims. I.e. instead of training a model which finds bounding boxes, why not just make a model that tells us whether a pothole is present in the image or not? This is binary classification, and is a task more suitable for the methods we learned in class (basic CNNs).
 
