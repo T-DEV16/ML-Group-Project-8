@@ -171,8 +171,11 @@ As we can see, the model predicted the bounding box coordinates as [0,0,0,0], wh
 
 ### [Model 5: Binary Classification using CNNs with dropout]
 This is how our boutique CNN binary classification model performed:
-![binary_example](https://user-images.githubusercontent.com/38708456/206115403-68f78b53-b820-49d3-891f-ea7d3dc127e7.png)
+<br>
+![binary_example](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Images/bi_plot.png?raw=true)
 
+Our loss function is binary cross entropy and we used the adam optimizer while running for 50 epochs.
+We see that the model converges at around 80% accuracy. 
 
 ## Discussion
 ### Model 1: Simple Model
