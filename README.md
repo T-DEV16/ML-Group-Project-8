@@ -19,7 +19,7 @@ After creating the csv dataset, it looks like this:
 The table organizes the different attributes of the images into columns. The img column has the gray scale representation of the images that were pulled from git for more a more efficient calculations. The smaller number decreases the complexity of the convolving process. The pothole being the target of the project is encoded as 1 and 0 for true and false of whether certain images contain potholes or not.
 
 ### Data Exploration
-We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. 
+We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. This can lead to oversampling where the data chosen for training is skewed towards one class. Therefore, it's important that we shuffle and split our data carefully.
 
 
 ![classes](https://user-images.githubusercontent.com/38708456/206113157-e7d53728-9381-4c36-b089-71328b6f14ae.png)
@@ -213,6 +213,7 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Test models on Jetson Nano
 - Wrote Python code for the Jetson Nano
 - debugged pathing bug in model
+- Proofreading and adding to README
 
 **Gordon Feliz**
 - Organized github files
