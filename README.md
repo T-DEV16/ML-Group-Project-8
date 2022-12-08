@@ -16,6 +16,7 @@ After creating the csv dataset, it looks like this:
 
 ![table](https://user-images.githubusercontent.com/38708456/206113022-aa12b6f7-11e6-439c-9e2a-145bee95f621.JPG)
 
+The table organizes the different attributes of the images into columns. The img column has the gray scale representation of the images that were pulled from git for more a more efficient calculations. The smaller number decreases the complexity of the convolving process. The pothole being the target of the project is encoded as 1 and 0 for true and false of whether certain images contain potholes or not.
 
 ### Data Exploration
 We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. 
