@@ -169,7 +169,7 @@ We can immediately see that this model did not train well. The validation loss s
 
 As we can see, the model predicted the bounding box coordinates as [0,0,0,0], when there was indeed a pothole.
 
-### [Model 5: Binary Classification using CNNs with dropout]
+### Model 5: Binary Classification using CNNs with dropout
 This is how our boutique CNN binary classification model performed:
 <br>
 ![binary_example](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Images/bi_plot.png?raw=true)
@@ -197,6 +197,10 @@ This model did significantly better than the others in terms of IOU. Although it
 
 ### Model 4: Branched VGG16 Model
 This model still needs to be significantly tweaked in order to see real results, but I thought the effect of the prior was very interesting.
+
+
+### Model 5: Binary Classification using CNNs with dropout
+This model had the highest accuracy of all our models, but it was limited to binary classification. Potentially it could improve with more epochs, but it appears that 80% accuracy might be the limit for the architecture. 
 
 ### Jetson Nano
 After fully developing our models we would have liked to test the models using the jetson nano with live video input. In setting up the jetson nano we encountered many issues with the different version of images to install on the sd card. 4.5 was used in the end since it was the only one that worked while the newer 4.6 version did not boot for the setup. Also the ssh functionality did not work, and libraries would not install(scipy). We would have liked to test the model by bringing the jetson with us in a car to capture live stream of the potholes on the road and indicating them with bounding boxes. 
