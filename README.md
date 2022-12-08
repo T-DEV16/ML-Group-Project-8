@@ -197,7 +197,7 @@ This is how our boutique CNN binary classification model performed:
 
 
 ### Model 6: SVM Model
-Unfortunately, while the accuracy reaches 70 percent for strict images cliassfication, the bounds used to detect the pothole specifically were way off. This might cause an issue with pothole detection but it was good that there was a 70 percent accuaracy in terms of image classfication. The image detection result looks like this:
+Unfortunately, while the accuracy reaches **70** percent for strict images classification, the bounds used to detect the pothole specifically were way off. This might cause an issue with pothole detection but it was good that there was a **70** percent accuaracy in terms of image classfication. The image detection result looks like this:
 
 SVM Prediction via heatmap:
 
