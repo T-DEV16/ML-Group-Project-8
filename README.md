@@ -104,6 +104,8 @@ First thing’s first, we need to label our dataset. Our dataset is technically 
 
 ![bi_model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/6c71b28ad666765dd150091a0003fba4c5785fba/Images/bi_model_overview.PNG)
 
+The model starts off with the random augmentation layer provided by the keras_cv package. It applies a random set of augmentations to the image including hue and saturation changes, MixUp, etc. but not geometric transformations as it doesn’t make sense with our dataset to do them (the camera is always pointed to the round, hopefully!) The images are then rescaled to numeric values in the range [0, 1]. From there, we get into the meat of the network: 1 convolutional layer with 128 channels, 3 with 64, and then 2 with 32. Each convolution is 3 by 3 and inbetween are 2 by 2 max pooling layers. We also apply batch normalization before each convolution. On the backend there are fully connected layers of sizes 64, 16, and 1 respectively. Between each fully connected layer is a dropout layer which drops out 20% of the neurons. The activation functions are all ReLU throughout the model. 
+
 ## Results
 
 We are using IOU as an accuracy metric for the bounding boxes. Intersection over Union (IOU) is defined as the area of overlap divided by the area of union of the predicted and true bounding boxes. Typically, an IOU > 0.5 is very good.
@@ -167,7 +169,9 @@ We can immediately see that this model did not train well. The validation loss s
 
 As we can see, the model predicted the bounding box coordinates as [0,0,0,0], when there was indeed a pothole.
 
-
+### [Model 5: Binary Classification using CNNs with dropout]
+This is how our boutique CNN binary classification model performed:
+![binary_example](https://user-images.githubusercontent.com/38708456/206115403-68f78b53-b820-49d3-891f-ea7d3dc127e7.png)
 
 
 ## Discussion
