@@ -203,3 +203,7 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Wrote the Results section
 - Wrote the Discussion section
 - Wrote the Conclusion Section
+**Nich Chan, Dennis Li**
+- Setup the Jetson Nano
+- Test models on Jetson Nano
+- Wrote Python code for the Jetson Nano
