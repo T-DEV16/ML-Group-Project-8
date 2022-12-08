@@ -231,3 +231,12 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Helped keep README links up to date
 - Split PotholeDetection(1) into two files, created Data Creation and Processing notebook and Branched VGG16_Model
 - Cleaned up & bug fixed Data Creation and Processing + Branched VGG16_Model
+
+**Kaleb Crans**
+- Collaborated on the dataset preprocessing milestone
+- Created the data preprocessing pipeline for binary classification models
+- Built the fifth model (and the many iterations of architectures and hyperparameters)
+- Wrote the Data Preprocessing section
+- Ported notebooks to Google Collab (added code to download dataset)
+- Contributed to Discussion section
+
