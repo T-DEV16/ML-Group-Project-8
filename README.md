@@ -228,6 +228,7 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Wrote Python code for the Jetson Nano
 - debugged pathing bug in model
 - Proofreading and adding to README
+- Helped Organize Git Repo
 
 **Gordon Feliz**
 - Organized github files
