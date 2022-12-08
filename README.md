@@ -261,7 +261,7 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Cleaned up & bug fixed Data Creation and Processing + Branched VGG16_Model
 
 **Tarun Devesetti**
-- Added SVM Model to get 70 percent image classificiation and attempt to detect potholes
+- Added SVM Model to get 70 percent image classificiation accuracy and attempt to detect potholes
 - Added SVM Model to introduction in README: Results, Discussion, Models
 - Added images to the README
 - Wrote Python Code for SVM Model (Inspired by Kaggle Website (Support Vector Machine Object Detection), Link: https://www.kaggle.com/code/mehmetlaudatekman/support-vector-machine-object-detection/notebook
