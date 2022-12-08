@@ -1,7 +1,7 @@
 # ML-Group-Project-8: Pothole Detection on the Jetson Nano
 
 ## Introduction
-With the new era of autonomous vehicles, there is an ever growing necessity for autonomous road safety and road defect detection. Our objective in this project is to develop machine learning models which detect potholes in roads, a small step towards making autonomous driving safer. The data we are currently planning to use comes from the Brazilian National Department of Transport Infrastructure, and consists of 2235 images of highways in the states of Espírito Santo, Rio Grande do Sul and the Federal District from 2014 to 2017. The resolution of the images is at least 1280x729 with a 16:9 aspect ratio. We hope to train deep convolutional neural networks and potentially other machine learning models to consistently identify potholes in new road images, with the end-goal of real time video inference using a Jetson Nano. We will also consider many data preprocessing methods such as image masking/transforming and scaling in our pipeline to further optimize our models. Our hypothesis is that a sufficiently large deep convolutional neural network is capable of accurately classifying road defects, and we hope to optimize its performance with what we have learned in class and previous work in the field.
+With the new era of autonomous vehicles, there is an ever growing necessity for autonomous road safety and road defect detection. Our objective in this project is to develop machine learning models which detect potholes in roads, a small step towards making autonomous driving safer. The data we are currently planning to use comes from the Brazilian National Department of Transport Infrastructure, and consists of 2235 images of highways in the states of Espírito Santo, Rio Grande do Sul and the Federal District from 2014 to 2017. The resolution of the images is at least 1280x729 with a 16:9 aspect ratio. We hope to train deep convolutional neural networks and also an SVM image classification/object detection to consistently identify potholes in new road images, with the end-goal of real time video inference using a Jetson Nano. We will also consider many data preprocessing methods such as image masking/transforming, hog extraction, negative image extractiongreyscale extraction, and scaling in our pipeline to further optimize our models. Our hypothesis is that a sufficiently large deep convolutional neural network is capable of accurately classifying road defects, and we hope to optimize its performance with what we have learned in class and previous work in the field.
 
 ## Methods
 
@@ -104,7 +104,11 @@ First thing’s first, we need to label our dataset. Our dataset is technically 
 
 ![bi_model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/6c71b28ad666765dd150091a0003fba4c5785fba/Images/bi_model_overview.PNG)
 
-The model starts off with the random augmentation layer provided by the keras_cv package. It applies a random set of augmentations to the image including hue and saturation changes, MixUp, etc. but not geometric transformations as it doesn’t make sense with our dataset to do them (the camera is always pointed to the round, hopefully!) The images are then rescaled to numeric values in the range [0, 1]. From there, we get into the meat of the network: 1 convolutional layer with 128 channels, 3 with 64, and then 2 with 32. Each convolution is 3 by 3 and inbetween are 2 by 2 max pooling layers. We also apply batch normalization before each convolution. On the backend there are fully connected layers of sizes 64, 16, and 1 respectively. Between each fully connected layer is a dropout layer which drops out 20% of the neurons. The activation functions are all ReLU throughout the model. 
+
+### [Model 6: SVM Model for image classification and pothole detection](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Notebooks/SVM_Model.ipynb)
+
+We introduce an SVM Object detection model from kaggle that was inspired by Mehmet Tekman which classified cars. We modify the code and use it to classify images and even further detect potholes via the SVM bounds. After data preprocessing we augment the images via hogs, negative images, and gray scale
+
 
 ## Results
 
@@ -169,13 +173,13 @@ We can immediately see that this model did not train well. The validation loss s
 
 As we can see, the model predicted the bounding box coordinates as [0,0,0,0], when there was indeed a pothole.
 
-### [Model 5: Binary Classification using CNNs with dropout]
-This is how our boutique CNN binary classification model performed:
-<br>
-![binary_example](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Images/bi_plot.png?raw=true)
 
-Our loss function is binary cross entropy and we used the adam optimizer while running for 50 epochs.
-We see that the model converges at around 80% accuracy. 
+### Model 6: SVM Model
+Unfortunately, while the accuracy reaches 70 percent for strict images cliassfication, the bounds used to detect the pothole specifically were way off. This might cause an issue with pothole detection but it was good that there was a 70 percent accuaracy in terms of image classfication
+
+
+
+
 
 ## Discussion
 ### Model 1: Simple Model
@@ -197,6 +201,10 @@ This model did significantly better than the others in terms of IOU. Although it
 
 ### Model 4: Branched VGG16 Model
 This model still needs to be significantly tweaked in order to see real results, but I thought the effect of the prior was very interesting.
+
+
+### Model 6: SVM Model
+We used this model because the model in kaggle was able to cleanly detect cars from its features solelely using SVM window slicing and other preprocessing steps like hogs. We did the same thing with potholes but since they are smaller and more harder to detect than cars the pothole detection was not as great. In the future, we can extract more feature to determine pothole
 
 ### Jetson Nano
 After fully developing our models we would have liked to test the models using the jetson nano with live video input. In setting up the jetson nano we encountered many issues with the different version of images to install on the sd card. 4.5 was used in the end since it was the only one that worked while the newer 4.6 version did not boot for the setup. Also the ssh functionality did not work, and libraries would not install(scipy). We would have liked to test the model by bringing the jetson with us in a car to capture live stream of the potholes on the road and indicating them with bounding boxes. 
@@ -231,7 +239,6 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Wrote Python code for the Jetson Nano
 - debugged pathing bug in model
 - Proofreading and adding to README
-- Helped Organize Git Repo
 
 **Gordon Feliz**
 - Organized github files
@@ -240,11 +247,10 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 - Split PotholeDetection(1) into two files, created Data Creation and Processing notebook and Branched VGG16_Model
 - Cleaned up & bug fixed Data Creation and Processing + Branched VGG16_Model
 
-**Kaleb Crans**
-- Collaborated on the dataset preprocessing milestone
-- Created the data preprocessing pipeline for binary classification models
-- Built the fifth model (and the many iterations of architectures and hyperparameters)
-- Wrote the Data Preprocessing section
-- Ported notebooks to Google Collab (added code to download dataset)
-- Contributed to Discussion section
+**Tarun Devesetti**
+- Added SVM Model to get 70 percent image classificiation and attempt to detect potholes
+- Added SVM Model to introduction
+- Added images to the README
+- Wrote Python Code for SVM Model (Inspired by Kaggle Website (Support Vector Machine Object Detection), Link: https://www.kaggle.com/code/mehmetlaudatekman/support-vector-machine-object-detection/notebook
+- Updated Model SVM 6 with data preprocessing steps that were not used in the neural networks
 
