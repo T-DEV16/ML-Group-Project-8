@@ -8,6 +8,7 @@ With the new era of autonomous vehicles, there is an ever growing necessity for 
 ### Data Creation
 The first step is to create the dataset with the images, their labels, and the parameters for the pothole bounding boxes. We will use keras to load and convert images to numpy arrays, and cv2 to detect the potholes and label them. We store the dataset as a csv file. This is what a sample/mask looks like with its corresponding bounding box
 
+The table organizes the different attributes of the images into columns. The img column has the gray scale representation of the images that were pulled from git for more a more efficient calculations. The smaller number decreases the complexity of the convolving process. The pothole being the target of the project is encoded as 1 and 0 for true and false of whether certain images contain potholes or not.
 
 ![sample](https://user-images.githubusercontent.com/38708456/206112718-8283b796-b305-4bf7-b2a5-9e56d6d8c95f.png)
 
@@ -16,7 +17,7 @@ After creating the csv dataset, it looks like this:
 
 ![table](https://user-images.githubusercontent.com/38708456/206113022-aa12b6f7-11e6-439c-9e2a-145bee95f621.JPG)
 
-The table organizes the different attributes of the images into columns. The img column has the gray scale representation of the images that were pulled from git for more a more efficient calculations. The smaller number decreases the complexity of the convolving process. The pothole being the target of the project is encoded as 1 and 0 for true and false of whether certain images contain potholes or not.
+
 
 ### Data Exploration
 We are working with a dataset that contains **2235** samples (images). The target classes are **0** and **1**, which correspond to the given road containing a pothole (**1**) or not (**0**). As we can see in the target class distribution, the data is a bit imbalanced. We have **564** samples with potholes, and **1671** samples without. This can lead to oversampling where the data chosen for training is skewed towards one class. Therefore, it's important that we shuffle and split our data carefully.
@@ -49,6 +50,7 @@ In order to standardize, we scale each image down to 600 by 600. This also makes
 * Our result is 2236 image pairs all of which are (600, 600) numpy arrays with float values ranging from 0 to 1.
 
 [1] The main reason is that as long as the rescaling doesn't significantly distort the relevant features of an image, shrinking it down allows us to build a deeper model and train on more examples with the limited compute and time resources we have. We will test it out but most likely we are going to end up shrinking the images even further (to 250 by 250) later on.
+
 
 ### [Model 1: Simple Model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/510102881861f54d81c0cf5a7ddb4ef11e09b0b3/Notebooks/Simple_Model.ipynb)
 
