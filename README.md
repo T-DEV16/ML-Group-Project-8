@@ -174,6 +174,13 @@ We can immediately see that this model did not train well. The validation loss s
 As we can see, the model predicted the bounding box coordinates as [0,0,0,0], when there was indeed a pothole.
 
 
+
+### Model 5: Binary Classification using CNNs with dropout
+This is how our boutique CNN binary classification model performed:
+<br>
+![binary_example](https://github.com/sachinmloecher/ML-Group-Project-8/blob/main/Images/bi_plot.png?raw=true)
+
+
 ### Model 6: SVM Model
 Unfortunately, while the accuracy reaches 70 percent for strict images cliassfication, the bounds used to detect the pothole specifically were way off. This might cause an issue with pothole detection but it was good that there was a 70 percent accuaracy in terms of image classfication
 
@@ -203,8 +210,14 @@ This model did significantly better than the others in terms of IOU. Although it
 This model still needs to be significantly tweaked in order to see real results, but I thought the effect of the prior was very interesting.
 
 
+
+
+
+### Model 5: Binary Classification using CNNs with dropout
+This model had the highest accuracy of all our models, but it was limited to binary classification. Potentially it could improve with more epochs, but it appears that 80% accuracy might be the limit for the architecture. 
+
 ### Model 6: SVM Model
-We used this model because the model in kaggle was able to cleanly detect cars from its features solelely using SVM window slicing and other preprocessing steps like hogs. We did the same thing with potholes but since they are smaller and more harder to detect than cars the pothole detection was not as great. In the future, we can extract more feature to determine pothole
+We used this model because the model in kaggle was able to cleanly detect cars from its features solelely using SVM window slicing and other preprocessing steps like hogs. We did the same thing with potholes but since they are smaller and more harder to detect than cars the pothole detection was not as great. In the future, we can extract more feature to determine if there are potholes
 
 ### Jetson Nano
 After fully developing our models we would have liked to test the models using the jetson nano with live video input. In setting up the jetson nano we encountered many issues with the different version of images to install on the sd card. 4.5 was used in the end since it was the only one that worked while the newer 4.6 version did not boot for the setup. Also the ssh functionality did not work, and libraries would not install(scipy). We would have liked to test the model by bringing the jetson with us in a car to capture live stream of the potholes on the road and indicating them with bounding boxes. 
@@ -249,8 +262,10 @@ To conclude, the VGG16 Model performed the best of the models we created, althou
 
 **Tarun Devesetti**
 - Added SVM Model to get 70 percent image classificiation and attempt to detect potholes
-- Added SVM Model to introduction
+- Added SVM Model to introduction in README: Results, Discussion, Models
 - Added images to the README
 - Wrote Python Code for SVM Model (Inspired by Kaggle Website (Support Vector Machine Object Detection), Link: https://www.kaggle.com/code/mehmetlaudatekman/support-vector-machine-object-detection/notebook
 - Updated Model SVM 6 with data preprocessing steps that were not used in the neural networks
+- Used Preprocessing steps like MiniMax Scaling and data augmentation methods such as hog extraction, negative image extraction, and gray scale extraction for SVM model
+- U
 
