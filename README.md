@@ -96,13 +96,13 @@ Our fourth model is a work in progress. It is similar to model 3, as it extends 
 
 This model has **13** convolutional layers and **4** Dense layers for each branch, with Max Pooling in between layers. We used 15 epochs, with a batch size of 2, and the Adam optimizer with a learning rate of **0.0001*. This model has 5 outputs, corresponding to the 4 bounding box coordinate predictions and the binary pothole classification.
 
-Model 5:
+### Model 5 Binary Classification using CNNs with dropout:
 
 Due to the nature of limited computational resources and a fairly small dataset in the grand scheme of things, we thought it would be best to make a model with more modest aims. I.e. instead of training a model which finds bounding boxes, why not just make a model that tells us whether a pothole is present in the image or not? This is binary classification, and is a task more suitable for the methods we learned in class (basic CNNs).
 
 First thing’s first, we need to label our dataset. Our dataset is technically labeled with masks. Each mask is a black-and-white image with white pixels in the regions where potholes are. So for preprocessing, we can just look at the numpy array representation of a mask and if there are any values of 255 in the array then we classify the corresponding image as one with a pothole. We do this in the notebook dataset_org.ipynb and then rearrange the dataset into two folders: one for images with potholes and one for those without. We then download this new version of the dataset from colab and upload it to a public google drive zip file for easy access. The reason that we put the images into folders according to classification is that it allows us to turn the dataset into a tf.data.Dataset object which is a very efficient and convenient way to load the dataset when working in keras. It basically allows us to only load the images into memory when a batch is needed, where it then gets the images from disk and applies preprocessing methods. Now let’s get into the actual model:
 
-
+![bi_model](https://github.com/sachinmloecher/ML-Group-Project-8/blob/6c71b28ad666765dd150091a0003fba4c5785fba/Images/bi_model_overview.PNG)
 
 ## Results
 
